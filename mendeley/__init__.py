@@ -9,7 +9,7 @@ Access document data in the Mendeley sqlite3 database.
 """
 import os
 import sqlite3
-from ConfigParser import ConfigParser
+from configparser import ConfigParser
 
 # On Linux we can usually find the Mendeley sqlite3 database
 # at this location.
@@ -18,7 +18,7 @@ EXPECTED_MENDELEY_CONFIG_PATH = os.path.expanduser('~/.config/Mendeley Ltd./Mend
 
 MENDELEY_ROOT_FOLDER_ID = -1
 
-class MendeleyError(StandardError):
+class MendeleyError(Exception):
     pass
 
 def find_mendeley_sqlite_path():
@@ -37,7 +37,7 @@ def find_mendeley_sqlite_path():
             candidate_path = os.path.join(EXPECTED_MENDELEY_SQLITE_DIR, '%s@www.mendeley.com.sqlite' % (email,))
             if os.path.exists(candidate_path):
                 return candidate_path
-    except StandardError:
+    except Exception:
         pass
 
     return None
