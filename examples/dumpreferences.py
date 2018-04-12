@@ -6,11 +6,11 @@ in the Mendeley local database.
 
 from __future__ import print_function
 
-import mendeley
+import lmendeley
 import operator
 
 def main():
-    db = mendeley.MendeleyDatabaseInterface()
+    db = lmendeley.MendeleyDatabaseInterface()
     references = db.get_references()
 
     references.sort(key=operator.attrgetter('authors'))

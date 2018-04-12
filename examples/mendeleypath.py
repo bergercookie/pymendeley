@@ -6,7 +6,7 @@ Prints the path to the mendeley sqlite database.
 from __future__ import print_function
 
 import sys
-from mendeley import find_mendeley_sqlite_path
+from lmendeley import find_mendeley_sqlite_path
 
 def main():
     path = find_mendeley_sqlite_path()

@@ -15,7 +15,7 @@ import sys
 import urllib
 import shutil
 import os
-import mendeley
+import lmendeley
 
 def main():
     assert len(sys.argv) == 3, 'Usage: {0} folder destination'.format(sys.argv[0])
@@ -23,7 +23,7 @@ def main():
 
     assert os.path.exists(destination), 'Destination path "{0}" does not exist.'.format(destination)
 
-    db = mendeley.MendeleyDatabaseInterface()
+    db = lmendeley.MendeleyDatabaseInterface()
     for reference in db.get_references_in_folder(folder):
         urlpath = db.get_reference_path(reference)
         if urlpath:

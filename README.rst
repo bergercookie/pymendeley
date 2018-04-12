@@ -7,15 +7,15 @@ pymendeley retrieves reference information from Mendeley's local sqlite3
 database.
 
 Install using::
-    
+
     sudo pip install https://github.com/brotchie/pymendeley/tarball/master
 
 Dump a list of all references::
 
-    import mendeley
+    import lmendeley
     import operator
 
-    db = mendeley.MendeleyDatabaseInterface()
+    db = lmendeley.MendeleyDatabaseInterface()
     references = db.get_references()
 
     references.sort(key=operator.attrgetter('authors'))

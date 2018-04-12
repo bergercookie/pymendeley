@@ -70,8 +70,8 @@ class MendeleyDatabaseInterface(object):
 
     def get_reference_path_by_uuid(self, uuid):
         """
-        For a given document UUID, looks up and returns
-        its first local file url.
+        For a given document UUID, looks up and returns its first local file
+        url.
 
         """
         with sqlite3.connect(self.path) as db:
