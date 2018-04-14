@@ -11,7 +11,7 @@ import operator
 
 def main():
     db = lmendeley.MendeleyDatabaseInterface()
-    references = db.get_references()
+    references = db.get_all_references()
 
     references.sort(key=operator.attrgetter('authors'))
 
