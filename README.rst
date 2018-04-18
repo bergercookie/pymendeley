@@ -6,9 +6,9 @@ Python package for accessing Mendeley's local sqlite3 database
 pymendeley retrieves reference information from Mendeley's local sqlite3
 database.
 
-Install using::
+Install `bergercookie/pymendeley <https://github.com/brotchie/pymendeley/tarball/master>`_ using::
 
-    sudo pip install https://github.com/brotchie/pymendeley/tarball/master
+    sudo pip install https://github.com/bergercookie/pymendeley/tarball/master
 
 Dump a list of all references::
 
@@ -34,3 +34,7 @@ Partial output of result::
     Waggoner - 1997 - Spline Methods for Extracting Interest Rate Curves from Coupon Bond Prices
     Wang, Zhou, Guan - 2011 - Detecting Collusive Cliques in Futures Markets Based on Trading Behaviors
     ...
+
+Projects using pymendeley:
+
+* `mendeley2calibre <https://github.com/bergercookie/mendeley2calibre>`_

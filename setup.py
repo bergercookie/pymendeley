@@ -5,7 +5,7 @@ try:
 except:
     from distutils.core import setup
 
-PKG_NAME="lmendeley"
+PKG_NAME = "lmendeley"
 
 setup(name='pymendeley',
       packages=[PKG_NAME],
@@ -16,6 +16,9 @@ setup(name='pymendeley',
       description='Python library for accessing the local Mendeley sqlite3 database.',
       author='James Brotchie',
       author_email='brotchie@gmail.com',
-      url='https://github.com/brotchie/pymendeley',
+      maintainer='Nikos Koukis',
+      maintainer_email='nickkouk@gmail.com',
+      url='https://github.com/bergercookie/pymendeley',
+      download_url='https://github.org/bergercookie/pymendeley',
       platforms="Linux",
       )
