@@ -27,7 +27,7 @@ class GenericReference(object):
 
         """
 
-        """Parameters of a Mendeley Reference."""
+        """Parameters of a Generic Reference."""
         self.params = {
             key: None for key in GenericReference.param_keys
         }  # Dict[str, Any]
