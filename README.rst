@@ -4,7 +4,7 @@ Python package for accessing Mendeley's local sqlite3 database
 ==============================================================
 
 Description
----
+-----
 
 pymendeley retrieves reference information from Mendeley's local sqlite3
 database.
@@ -28,7 +28,7 @@ Projects using pymendeley:
 * `mendeley2calibre <https://github.com/bergercookie/mendeley2calibre>`_
 
 Offline documentation
----
+-----
 
 A developer can also generate the `Sphinx` documentation for `mendeley2calibre` offline:
 
