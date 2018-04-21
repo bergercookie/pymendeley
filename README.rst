@@ -30,14 +30,14 @@ Projects using pymendeley:
 Offline documentation
 -----
 
-A developer can also generate the `Sphinx` documentation for `mendeley2calibre` offline:
+A developer can also generate the *Sphinx* documentation for *mendeley2calibre* offline:
 
 - Install the related tools::
 
-    $ apt-get install sphinx sphinx_rtd_theme
+    apt-get install sphinx sphinx_rtd_theme
 
-- To update the documentation run `make html` inside the `docs` directory.
-    Open the build/html/index.html file to view the results::
+- To update the documentation run ``make html`` inside the ``docs`` directory.
+  Open the build/html/index.html file to view the results::
 
     $ firefox docs/build/html/index.html
 
