@@ -7,7 +7,12 @@ class MendeleyReference(GenericReference):
 
     """
 
-    """Keys in a document that the MendeleyReference cares about"""
+    """Keys in a document that the MendeleyReference cares about.
+
+    These correspond **only** to fields that can be found under the `documents`
+    table of the Mendeley sqlite3 db. Therefore, do not add e.g., the tags of a
+    document as a key here.
+    """
     param_keys = [
         "abstract",
         "citationKey",
@@ -31,13 +36,7 @@ class MendeleyReference(GenericReference):
     def __init__(self, *args, **kargs):
         GenericReference.__init__(self, *args, **kargs)
 
-        """List of authors of the paper.
-        This list should store dictionaries of the form:
-        {"first_name": ...,
-        "last_name": ... }
-
-        """
-        self.authors = []
+        self.tags = []  # List[int, List]
 
     def as_text_reference(self) -> str:
         msg = super(MendeleyReference, self).as_text_reference()

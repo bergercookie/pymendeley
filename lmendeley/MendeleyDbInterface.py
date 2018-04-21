@@ -1,7 +1,7 @@
 import sqlite3
 from .MendeleyReference import MendeleyReference
 import atexit
-from typing import Dict, Any
+from typing import Dict, Any, Tuple
 from . import find_mendeley_sqlite_path
 
 
@@ -63,10 +63,29 @@ class MendeleyDbInterface(object):
             "WHERE Files.hash = DocumentFiles.hash AND DocumentFiles.documentId = Documents.id"))
         doc_id_to_url = {doc_url[0]: doc_url[-1]
                          for doc_url in id2url
-                         if id2url[-1]}
+                         if id2url[-1]}  # Dict[str, str]
+
+        id_authors = self.db.execute("SELECT Documents.id, group_concat(DocumentContributors.firstNames, ','), group_concat(DocumentContributors.lastName, ',') as authors_last "
+                                     "FROM DocumentContributors, Documents, DocumentFolders "
+                                     "WHERE Documents.id=DocumentContributors.documentId AND DocumentFolders.documentId=Documents.id group by Documents.title "
+                                     "ORDER BY authors_last")
+        # zip first names and last names
+        # final form
+        # {id: [(first_name1, last_name1), (first_name2, last_name2), ...}
+        doc_id_to_authors_list = {
+            i[0]: list(zip(i[1].split(','), i[2].split(',')))
+            for i in id_authors
+        }  # Dict[str, Tuple]
 
         # grab the tags of the documents
-        # TODO
+        id2tags = self.db.execute("SELECT Documents.id, Documenttags.tag "
+                                  "FROM Documents, Documenttags "
+                                  "WHERE Documents.id = Documenttags.documentId")
+        doc_id_to_tags = {i[0]: i[-1] for i in id2tags}
+        # tags should always be a list
+        for key, val in doc_id_to_tags.items():
+            if not isinstance(val, list):
+                doc_id_to_tags[key] = [val]
 
         for cont in conts:
             curr_id = cont[id_indx]
@@ -84,8 +103,13 @@ class MendeleyDbInterface(object):
             ref.doc_url = doc_id_to_url[curr_id]
 
             # fill the authors
-            # TODO
+            if curr_id in doc_id_to_authors_list.keys():
+                ref.authors = doc_id_to_authors_list[curr_id]
 
             self.doc_id_to_reference[curr_id] = ref
+
+            # fill the tags
+            if curr_id in doc_id_to_tags.keys():
+                ref.tags = doc_id_to_tags[curr_id]
 
 

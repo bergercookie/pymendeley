@@ -34,6 +34,12 @@ class GenericReference(object):
         self.params.update(kargs)
         self.doc_url = ''  # type: str
 
+        """List of authors of the paper.
+        Should store tuples of the form: (first_name, last_name)
+
+        """
+        self.authors = []  # List[str, str]
+
     def __enter__(self):
         return self
 
