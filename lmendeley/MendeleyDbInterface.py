@@ -2,14 +2,35 @@ import sqlite3
 from .MendeleyReference import MendeleyReference
 import atexit
 from typing import Dict, Any, Tuple
+import logging
 from . import find_mendeley_sqlite_path
 
 
 class MendeleyDbInterface(object):
     """Class that interfaces with the Mendeley sqlite3 database."""
 
-    def __init__(self, path=None):
-        self.path = path or find_mendeley_sqlite_path()  # type: str
+    def __init__(self, path=None, *args, **kargs):
+        if "logger" in kargs.keys():
+            self.logger = kargs["logger"]
+        else:
+            self.logger = logging.getLogger(type(self).__name__)
+            logging.basicConfig(level=logging.DEBUG)
+            self.logger.setLevel(logging.DEBUG)
+
+        self.path = ""  # type: str
+        if path:
+            self.logger.warn("Path to the Mendeley DB not specified. "
+                             "Using find_mendeley_sqlite_path to find it...")
+
+            self.path = find_mendeley_sqlite_path()
+        else:
+            self.path = find_mendeley_sqlite_path()
+
+        if not self.path:
+            self.logger.error("Failed to find Mendeley DB file."
+                              "Make sure you have installed mendeley correctly, "
+                              "otherwise locate and specify it manually.")
+            raise RuntimeError()
 
         """Document ID => MendeleyReference."""
         self.doc_id_to_reference = {}  # type: Dict[int, MendeleyReference]
@@ -19,7 +40,7 @@ class MendeleyDbInterface(object):
         """
         self.use_local_urls_only = True
 
-        print("Connecting to the Mendeley db...")
+        self.logger.info("Connecting to the Mendeley DB \"{}\"...".format(self.path))
         self.db = sqlite3.connect(self.path)
 
         atexit.register(self.cleanup)
