@@ -12,7 +12,7 @@ setup(name='pymendeley',
       install_requires=(
           "configparser",
       ),
-      version='0.1.0',
+      version='0.1.1',
       description='Python library for accessing the local Mendeley sqlite3 database.',
       author='James Brotchie',
       author_email='brotchie@gmail.com',
