@@ -1,1 +1,21 @@
-#!/usr/bin/env bash
+#cp!/usr/bin/env bash
+
+# This is run by travis automatically from the root of the project
+# Compute the pylint score, put the badge to a certain location for README to
+# find it
+cd lmendeley
+result=$(pylint ./* | tail -n 2 | head -n 1)
+cd ..
+
+score="$(echo "$result" | cut -d' ' -f7 | cut -d'/' -f1)"
+printf "Score: %s\n" "$score"
+
+url="https://mperlet.github.io/pybadge/badges/$score.svg"
+loc_path="resources/pylint_badge.svg"
+
+printf "Writing pylint badge to %s\n" "$loc_path"
+wget "$url" -O "$loc_path"
+
+# Yes, we readd the file here, and there's nothing wrong with that! :)
+git add "$loc_path"
+

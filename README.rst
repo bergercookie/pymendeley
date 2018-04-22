@@ -8,6 +8,9 @@ Python package for accessing Mendeley's local sqlite3 database
     :target: http://pymendeley.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
+.. image:: https://github.com/bergercookie/pymendeley/blob/master/resources/pylint_badge.svg
+   :target: https://github.com/bergercookie/pymendeley/blob/master/resources/pylint_badge.svg
+
 .. image:: https://img.shields.io/badge/Made%20with-Python-1f425f.svg
    :target: https://www.python.org/
 
@@ -37,6 +40,7 @@ Dump a list of all references::
 Projects using pymendeley:
 
 * `mendeley2calibre <https://github.com/bergercookie/mendeley2calibre>`_
+
 
 Offline documentation
 -----

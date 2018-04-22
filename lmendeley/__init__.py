@@ -12,8 +12,10 @@ from configparser import ConfigParser
 
 # On Linux we can usually find the Mendeley sqlite3 database
 # at this location.
-EXPECTED_MENDELEY_SQLITE_DIR = os.path.expanduser('~/.local/share/data/Mendeley Ltd./Mendeley Desktop')
-EXPECTED_MENDELEY_CONFIG_PATH = os.path.expanduser('~/.config/Mendeley Ltd./Mendeley Desktop.conf')
+EXPECTED_MENDELEY_SQLITE_DIR = \
+    os.path.expanduser('~/.local/share/data/Mendeley Ltd./Mendeley Desktop')
+EXPECTED_MENDELEY_CONFIG_PATH = \
+    os.path.expanduser('~/.config/Mendeley Ltd./Mendeley Desktop.conf')
 
 
 def find_mendeley_sqlite_path():
@@ -26,10 +28,10 @@ def find_mendeley_sqlite_path():
     """
     try:
         if os.path.exists(EXPECTED_MENDELEY_CONFIG_PATH):
-            cp = ConfigParser()
-            cp.read(EXPECTED_MENDELEY_CONFIG_PATH)
+            config_parser = ConfigParser()
+            config_parser.read(EXPECTED_MENDELEY_CONFIG_PATH)
 
-            email = cp.get('MendeleyWeb', 'userEmail')
+            email = config_parser.get('MendeleyWeb', 'userEmail')
 
             candidate_path = os.path.join(EXPECTED_MENDELEY_SQLITE_DIR,
                                           '%s@www.mendeley.com.sqlite' %

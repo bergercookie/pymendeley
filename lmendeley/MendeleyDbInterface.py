@@ -1,8 +1,8 @@
 import sqlite3
-from .MendeleyReference import MendeleyReference
 import atexit
-from typing import Dict, Any, Tuple
 import logging
+from typing import Dict, Any, Tuple
+from .MendeleyReference import MendeleyReference
 from . import find_mendeley_sqlite_path
 
 
