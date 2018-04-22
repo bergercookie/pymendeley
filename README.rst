@@ -4,6 +4,10 @@ Python package for accessing Mendeley's local sqlite3 database
 .. image:: https://travis-ci.org/bergercookie/pymendeley.svg?branch=master
     :target: https://travis-ci.org/bergercookie/pymendeley
 
+.. image:: https://readthedocs.org/projects/pymendeley/badge/?version=latest
+    :target: http://pymendeley.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
 .. image:: https://img.shields.io/badge/Made%20with-Python-1f425f.svg
    :target: https://www.python.org/
 
@@ -37,7 +41,7 @@ Projects using pymendeley:
 Offline documentation
 -----
 
-A developer can also generate the *Sphinx* documentation for *mendeley2calibre* offline:
+A developer can also generate the *Sphinx* documentation for *pymendeley* offline:
 
 - Install the related tools::
 

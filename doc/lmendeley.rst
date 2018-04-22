@@ -28,15 +28,6 @@ lmendeley.MendeleyReference module
     :undoc-members:
     :show-inheritance:
 
-lmendeley.helpers module
-------------------------
-
-.. automodule:: lmendeley.helpers
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
 Module contents
 ---------------
 
